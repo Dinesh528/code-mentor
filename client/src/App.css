@@ -8,7 +8,7 @@ img {
 
 .landing {
   position: relative;
-  background: url("./img/showcase.jpg") no-repeat;
+  background: url("./images/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -49,11 +49,7 @@ footer {
   width: 100%;
 }
 
-.nav-item{
-  color: white;
- padding-left: 15px;
 
-}
 .right{
   float: right;
 }
@@ -61,7 +57,7 @@ footer {
 @media only screen and (max-width: 600px) {
   .landing {
     position: relative;
-    background: url("./img/showcase.jpg") no-repeat;
+    background: url("./images/showcase.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     height: 100vh;
