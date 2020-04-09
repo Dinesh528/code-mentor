@@ -3,7 +3,7 @@ import axios from 'axios';
 import {GET_PROFILE, 
         PROFILE_LOADING,
         CLEAR_CURRENT_PROFILE, 
-        GET_ERRORS,SET_CURRENT_USER 
+        GET_ERRORS,SET_CURRENT_USER, GET_PROFILES 
         }
         from './types';
 
@@ -21,6 +21,23 @@ export const getCurrentProfile= () => dispatch =>{
             dispatch({
                 type: GET_PROFILE,
                 payload: {}
+            })
+        )    
+}
+
+// Get profile by handle
+export const getProfileByHandle= (handle) => dispatch =>{
+    dispatch(setProfileLoading());
+    axios.get(`/api/profile/handle/${handle}`)
+        .then(res =>
+            dispatch({
+                type: GET_PROFILE,
+                payload: res.data
+            }))
+        .catch(err =>
+            dispatch({
+                type: GET_PROFILE,
+                payload: null
             })
         )    
 }
@@ -131,6 +148,26 @@ export const setProfileLoading = () =>{
         type: PROFILE_LOADING
     }
 }
+
+// Get all Profiles
+export const getProfiles = () => dispatch =>{
+    dispatch(setProfileLoading());
+    axios
+        .get('/api/profile/all')
+        .then(res => 
+            dispatch({
+                type: GET_PROFILES,
+                payload: res.data
+            })
+                
+        )
+        .catch(err =>
+            dispatch({
+                type: GET_PROFILES,
+                payload: null
+            })
+        );
+};
 
 // Clear Profile 
 export const clearCurrentProfile = () =>{
